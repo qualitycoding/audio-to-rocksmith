@@ -1,0 +1,207 @@
+{
+ "generated": "2026-09-23",
+ "confidence_levels": [
+  "unverified",
+  "single-source",
+  "corroborated",
+  "verified"
+ ],
+ "dropped": [
+  {
+   "id": "C-010",
+   "reason": "Demucs removed from scope (A-006)"
+  }
+ ],
+ "claims": [
+  {
+   "id": "C-001",
+   "claim": "PSARC TOC is AES-CFB encrypted; SNG payloads are AES-CTR encrypted (zlib-compressed entries).",
+   "kind": "software",
+   "load_bearing": true,
+   "confidence": "corroborated",
+   "source": "Rocksmith2014.NET source @b87c9a3 (PSARC/Cryptography.fs L18; SNG/Cryptography.fs L34-36)",
+   "evidence": "research/spikes/S2-rs2014net-inspect/output.txt",
+   "notes": "Static inspection only; round-trip executed in S-021. v1 stated 'AES-CTR' for PSARC: corrected."
+  },
+  {
+   "id": "C-002",
+   "claim": "A PC song PSARC contains per-arrangement SNG (not XML) plus manifest JSON, HSAN, XBlock, aggregate graph, BNK+WEM audio, DDS art.",
+   "kind": "software",
+   "load_bearing": true,
+   "confidence": "unverified",
+   "source": "Rocksmith2014.NET DLCProject/PackageBuilder.fs (not yet read in full)",
+   "evidence": null,
+   "notes": "Verify in S-021 by unpacking a built package and listing entries."
+  },
+  {
+   "id": "C-003",
+   "claim": "Rocksmith2014.NET exposes PackageBuilder.buildPackages, DD Generator.generateForArrangement, PhraseGenerator, ArrangementChecker, DLCProject.save/load.",
+   "kind": "software",
+   "load_bearing": true,
+   "confidence": "corroborated",
+   "source": "Rocksmith2014.NET source @b87c9a3",
+   "evidence": "research/spikes/S2-rs2014net-inspect/output.txt",
+   "notes": "Signatures seen; not yet called. S-020 builds rs-pack against them."
+  },
+  {
+   "id": "C-004",
+   "claim": "Rocksmith2014.NET targets .NET 10 (net10.0) and is MIT licensed.",
+   "kind": "software",
+   "load_bearing": true,
+   "confidence": "verified",
+   "source": "Rocksmith2014.NET @b87c9a3 fsproj + LICENSE",
+   "evidence": "research/spikes/S2-rs2014net-inspect/output.txt",
+   "notes": ""
+  },
+  {
+   "id": "C-005",
+   "claim": "basic-pitch 0.4.0 transcribes synthetic plucked-string guitar notes (E2\u2013E4 + E-major chord) at onset+pitch F1 0.96 (P 0.923, R 1.0).",
+   "kind": "computational",
+   "load_bearing": true,
+   "confidence": "verified",
+   "source": "Spike S3",
+   "evidence": "research/spikes/S3-basic-pitch-synthetic/result.json",
+   "notes": "Synthetic Karplus-Strong only. Real-audio accuracy is unknown until S-010."
+  },
+  {
+   "id": "C-006",
+   "claim": "On synthetic bass notes (E1\u2013A2) basic-pitch 0.4.0 yields recall 1.0 but precision 0.667, with false positives exactly +12 semitones above true notes.",
+   "kind": "computational",
+   "load_bearing": true,
+   "confidence": "verified",
+   "source": "Spike S3",
+   "evidence": "research/spikes/S3-basic-pitch-synthetic/result.json",
+   "notes": "Motivates D-007 octave-harmonic suppression."
+  },
+  {
+   "id": "C-007",
+   "claim": "Assigning notes to (string, fret) is a shortest-path problem over per-event candidate positions and is standardly solved by dynamic programming / Viterbi.",
+   "kind": "computational",
+   "load_bearing": true,
+   "confidence": "corroborated",
+   "source": "Tab-transcription literature (e.g. Sayegh 1989 optimal-path; Radicioni et al.); to be cited precisely in S-001",
+   "evidence": null,
+   "notes": "Algorithm correctness is enforced by T-010..T-016, not by the citation."
+  },
+  {
+   "id": "C-008",
+   "claim": "RS2014 instrumental XML requires ebeats, phrases, phraseIterations, sections, chordTemplates, levels (each with notes, chords, anchors, handShapes), tuning and arrangementProperties.",
+   "kind": "software",
+   "load_bearing": true,
+   "confidence": "unverified",
+   "source": "Rocksmith2014.XML InstrumentalArrangement type (to read in S-001)",
+   "evidence": null,
+   "notes": "Schema to be extracted from source in S-001 and fixture-tested in T-020."
+  },
+  {
+   "id": "C-009",
+   "claim": "XML \u2192 SNG conversion is performed by Rocksmith2014.Conversion.XmlToSng.",
+   "kind": "software",
+   "load_bearing": true,
+   "confidence": "corroborated",
+   "source": "Rocksmith2014.NET src/Rocksmith2014.Conversion/XmlToSng.fs exists",
+   "evidence": "research/spikes/S2-rs2014net-inspect/output.txt",
+   "notes": "Called indirectly by buildPackages; confirm in S-020."
+  },
+  {
+   "id": "C-011",
+   "claim": "basic-pitch 0.4.0 is not installable on Linux Python 3.12 (requires tensorflow<2.15.1, no cp312 wheel); resolves and installs on 3.11 with tensorflow 2.15.0.post1, numpy 1.26.4.",
+   "kind": "software",
+   "load_bearing": true,
+   "confidence": "verified",
+   "source": "Spikes S1, S3",
+   "evidence": "research/spikes/S1-python-resolve/SUMMARY.txt",
+   "notes": ""
+  },
+  {
+   "id": "C-012",
+   "claim": "resampy 0.4.2 (basic-pitch dep) imports pkg_resources, which setuptools >= 81 no longer provides; setuptools 80.10.2 works.",
+   "kind": "software",
+   "load_bearing": true,
+   "confidence": "verified",
+   "source": "Spike S3 (ModuleNotFoundError reproduced then fixed)",
+   "evidence": "research/rounds/round-1.md",
+   "notes": ""
+  },
+  {
+   "id": "C-013",
+   "claim": "basic-pitch 0.4.0 inference on ~5 s of audio completes in < 20 s including model load on CPU (4 threads).",
+   "kind": "computational",
+   "load_bearing": false,
+   "confidence": "verified",
+   "source": "Spike S3",
+   "evidence": "research/spikes/S3-basic-pitch-synthetic/result.json",
+   "notes": "Full-song timing measured in T-070."
+  },
+  {
+   "id": "C-014",
+   "claim": "DLC Builder (built on Rocksmith2014.NET) is cross-platform and at v3.5.0 (2025-07-24).",
+   "kind": "software",
+   "load_bearing": false,
+   "confidence": "corroborated",
+   "source": "customsforge.com DLC Builder page",
+   "evidence": null,
+   "notes": "Used as manual fallback (D-015)."
+  },
+  {
+   "id": "C-015",
+   "claim": "Rocksmith2014.NET audio conversion locates Wwise 2019/2021/2022/2023; on Linux it looks under the Wine prefix.",
+   "kind": "software",
+   "load_bearing": true,
+   "confidence": "corroborated",
+   "source": "Rocksmith2014.Audio/Wwise/WwiseFinder.fs @b87c9a3",
+   "evidence": "research/spikes/S2-rs2014net-inspect/output.txt",
+   "notes": "Conversion not executed (Wwise not installable in sandbox). S-022."
+  },
+  {
+   "id": "C-016",
+   "claim": "The legacy Custom Song Toolkit requires Wwise 2013 for RS2014 audio.",
+   "kind": "software",
+   "load_bearing": false,
+   "confidence": "single-source",
+   "source": "CustomsForge forum thread 66838",
+   "evidence": null,
+   "notes": "Only relevant as the reason RSTK is rejected."
+  },
+  {
+   "id": "C-017",
+   "claim": "librosa 0.11.0 beat_track provides beat times usable as an ebeat grid for steady-tempo material.",
+   "kind": "computational",
+   "load_bearing": true,
+   "confidence": "unverified",
+   "source": "librosa docs",
+   "evidence": null,
+   "notes": "Verify on click-track fixture T-017; tempo drift handled by D-006."
+  },
+  {
+   "id": "C-018",
+   "claim": "mir_eval.transcription.precision_recall_f1_overlap with offset_ratio=None gives onset+pitch note F1 with configurable tolerances.",
+   "kind": "computational",
+   "load_bearing": true,
+   "confidence": "verified",
+   "source": "Spike S3 (called successfully)",
+   "evidence": "research/spikes/S3-basic-pitch-synthetic/run.py",
+   "notes": ""
+  },
+  {
+   "id": "C-020",
+   "claim": "GuitarSet: 360 excerpts, 6 players (00\u201305), per-string JAMS note annotations, CC BY 4.0.",
+   "kind": "computational",
+   "load_bearing": true,
+   "confidence": "unverified",
+   "source": "Model knowledge; verify on Zenodo record in S-001",
+   "evidence": null,
+   "notes": "If licence or split differs, adjust D-012 at G-001 prep."
+  },
+  {
+   "id": "C-021",
+   "claim": "Slakh2100 test split contains bass stems with aligned MIDI, CC BY 4.0.",
+   "kind": "computational",
+   "load_bearing": true,
+   "confidence": "unverified",
+   "source": "Model knowledge; verify in S-001",
+   "evidence": null,
+   "notes": "Synthetic bass; see R-006."
+  }
+ ]
+}

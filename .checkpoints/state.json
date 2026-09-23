@@ -1,0 +1,28 @@
+{
+ "plan_version": 2,
+ "updated_utc": "2026-09-23",
+ "status": "BLOCKED",
+ "awaiting": "G-000",
+ "phases": {
+  "0": "intake defaults adopted; human answers pending (G-000)",
+  "1": "round 1 of >=3 complete; spikes S1-S3 committed",
+  "2": "tests specified, not frozen (S-003)",
+  "3": "plan constructed; cold read pending (S-002)",
+  "4": "author round 1 only; independent rounds pending (S-002)",
+  "5": "pushed"
+ },
+ "research": {
+  "rounds": 1,
+  "claims": {
+   "verified": 7,
+   "corroborated": 6,
+   "single-source": 1,
+   "unverified": 5
+  }
+ },
+ "gates": {
+  "G-000": null,
+  "G-001": null,
+  "G-002": null
+ }
+}

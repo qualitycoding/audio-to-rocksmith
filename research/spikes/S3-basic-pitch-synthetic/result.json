@@ -1,0 +1,49 @@
+{
+ "python": "3.11.16",
+ "seed": 0,
+ "guitar": {
+  "ref_notes": 12,
+  "est_notes": 13,
+  "precision": 0.923,
+  "recall": 1.0,
+  "f1_onset_pitch": 0.96,
+  "seconds": 16.53,
+  "est_pitches": [
+   40,
+   40,
+   45,
+   47,
+   50,
+   52,
+   52,
+   55,
+   56,
+   57,
+   59,
+   64,
+   67
+  ]
+ },
+ "bass": {
+  "ref_notes": 8,
+  "est_notes": 12,
+  "precision": 0.667,
+  "recall": 1.0,
+  "f1_onset_pitch": 0.8,
+  "seconds": 1.35,
+  "est_pitches": [
+   28,
+   31,
+   33,
+   36,
+   38,
+   40,
+   40,
+   43,
+   45,
+   50,
+   55,
+   57
+  ]
+ }
+}

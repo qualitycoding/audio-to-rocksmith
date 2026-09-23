@@ -1,0 +1,22 @@
+commit: b87c9a3afd31c40ade9685a9244e718e7581c0cb (Fri Mar 13 20:24:56 2026 +0200)
+license: MIT License
+target frameworks:
+      1         <TargetFramework>net10.0</TargetFramework>
+     10     <TargetFramework>net10.0</TargetFramework>
+PSARC cipher:
+18:        aes.Mode <- CipherMode.CFB
+SNG cipher:
+34:// At the moment, .NET Core does not support AES CTR, so it is implemented here via ECB.
+36:/// AES CTR encryption utilizing SSE2 intrinsics. Slightly faster than the non SIMD version.
+Wwise versions accepted:
+17:        |> Seq.tryFind (fun fn -> Regex.IsMatch(fn, "20(19|21|22|23)"))
+Wwise on Linux:
+46:        Path.Combine(homeDir, ".wine", "drive_c", "Program Files (x86)")
+50:        |> Option.defaultWith (fun () -> failwith "Could not find Wwise 2019/2021/2022/2023 installation in ~/.wine/drive_c/Program Files (x86)/Audiokinetic/")
+APIs:
+366:let buildPackages (targetPath: TargetPathType) (config: BuildConfig) (project: DLCProject) : Async<string array * Map<ArrangementId, string list>> =
+90:let generateForArrangement (config: GeneratorConfig) (arr: InstrumentalArrangement) =
+ArrangementChecker.fs
+PhraseGenerator.fs
+315:    let save (path: string) (project: DLCProject) =
+326:    let load (path: string) =
