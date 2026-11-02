@@ -1,5 +1,7 @@
 # HANDOFF — audio-to-rocksmith
 
+
+Reading order: `HANDOFF.md` → `ADDENDUM-PLAN-V3.9.md` → `plan/PLAN.md`. Later protocol amendments take precedence only where the gap ledger says so.
 **Status: BLOCKED — HUMAN DECISION REQUIRED at G-000.** Do not start S-001 until plan/GATE_LOG.md records G-000.
 
 ## Purpose
