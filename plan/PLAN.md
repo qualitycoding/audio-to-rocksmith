@@ -1,3 +1,5 @@
+# PLAN — protocol v3.9 (upgraded by ADDENDUM-PLAN-V3.9.md)
+
 # PLAN — audio-to-rocksmith (v2)
 
 **Status: BLOCKED — HUMAN DECISION REQUIRED (G-000)**
@@ -372,3 +374,11 @@ See plan/REVIEW.md for what changed from v1.
 - On failure: —
 - Gate: none
 - Relevant decisions/claims: —
+
+
+## Amendment closing/review steps (v3.9)
+
+- **S-REVIEW** — Traditional code review before packaging/release.
+- **S-ADVERSARIAL** — Adversarial review of security/correctness claims.
+- **S-RETRO** — Retrospective: review execution log, deviations and gate records.
+- **S-KNOW** — Knowledge/lessons: record classified lessons and knowledge items; G-003 controls publication to the Lessons and knowledge stores.

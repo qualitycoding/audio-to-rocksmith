@@ -12,3 +12,14 @@
 | R-008 | Beat tracking wrong on rubato/odd meter → chart drifts | technical | Medium | Med | C-017 | `--bpm/--first-beat/--time-signature` overrides; unsteady-tempo warning | residual |
 | R-009 | Frozen tests depend on still-unverified schema | integrity | High | Med | C-008 | Freeze only after S-001 extracts schema (S-003 depends on S-001 via S-002) | mitigated |
 | R-010 | Plaintext GitHub token pasted in chat is reused | security | Low | High | planning session | Revoke token; use a fine-grained, repo-scoped, short-expiry token | open (human) |
+
+## v3.9 addendum risk round (2026-11-02)
+
+| Risk | Severity | Mitigation | Status |
+|---|---|---|---|
+| No independent fresh-context review (D-906) | High | Recorded substitution; independent review scheduled before product execution resumes | Open |
+| CI-dependent checks (mutation pricing/floor, matrix jobs) not locally executable (D-905) | Medium | CI is the authoritative venue; estimates labelled; post-conditions gate in CI | Open |
+| Lesson/knowledge store push pending G-003 sign-off | Low | Bundle fallback documented; does not block amendment completion | Open |
+
+Pre-mortem rounds repeated to zero Critical risks; High risk retained honestly
+with owner and mitigation.
