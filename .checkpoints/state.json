@@ -24,5 +24,22 @@
   "G-000": null,
   "G-001": null,
   "G-002": null
- }
+ },
+ "execution_context": {
+  "objective": "v3.9 planning addendum amendment (planning-only)",
+  "protocol": "v3.9",
+  "protocol_commit": "ef99285404419153dd5f9aaae14f14bb53604a62",
+  "implementation_branch": "impl-v39-addendum-20261102",
+  "amended_on": "2026-11-02"
+ },
+ "active_variables": {
+  "baseline": "v3.1",
+  "source_tip": "d54b607bd37a0ef28eef9e84ae9ed33a1afb87c4",
+  "audited_commit": "065504cf5d8a37a60119c92cb45a5531b0dfb387"
+ },
+ "artifacts": {
+  "ADDENDUM-V3.9-STATUS.md": "pending-write"
+ },
+ "lesson_store": "qualitycoding/Lessons",
+ "knowledge_store": "qualitycoding/knowledge"
 }
